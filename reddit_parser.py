@@ -143,8 +143,8 @@ def retrieve_top(subreddit, timelabel:str="day", limit:int=UPPER_BOUND) -> pd.Da
 		if 0 in rowdict.keys() and rowdict[0] == -1: continue
 		# Print submission ID
 		infostr = "Current ID: " + rowdict["ID"]
-		timestr = f"Time elapsed: {(endtime - starttime) / 1000:.03f}"
-		print(infostr, timestr)
+		timestr = f"Time elapsed: {(endtime - starttime) / 1000:.03f} sec"
+		print(infostr + '\t' + timestr)
 		logging.debug(infostr)
 		logging.debug(timestr)
 		# Writes data to list and output file
@@ -179,6 +179,8 @@ if __name__ == "__main__":
 		alldata = pd.concat([alldata, data], axis=0)
 		alldata.drop_duplicates(subset="ID", inplace=True)
 	# Save all data to a file
-	data.to_csv(OUTPUT_FOLDER + "DATA.txt", sep='\t', index=False)
+	print("=================================================")
+	logging.info("=================================================")
+	alldata.to_csv(OUTPUT_FOLDER + "DATA.txt", sep='\t', index=False)
 
 ##### --------------------------------------------------------------------------------------- #####
