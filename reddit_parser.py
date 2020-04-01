@@ -108,7 +108,11 @@ def process_submission(submission) -> dict:
 	submission_localname = OUTPUT_FOLDER + submission.id + "." + submission_url.split('.')[-1]
 	# Retrieves images to local machine
 	if submission_type == "Image" and not os.path.isfile(submission_localname): 
-		retrieve_image(submission_url, submission_localname)
+		try: retrieve_image(submission_url, submission_localname)
+		except: 
+			exceptionstr = f"EXCEPTION detected on saving {submission_url} to {submission_localname}"
+			print(exceptionstr)
+			logging.debug(exceptionstr)
 	else: submission_localname = "NA"
 	# Saves all the data
 	rowdict = {}
