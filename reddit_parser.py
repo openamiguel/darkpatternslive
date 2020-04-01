@@ -9,6 +9,8 @@ import praw
 import urllib.request
 import logging
 
+# from textblob import TextBlob
+
 import pandas as pandas
 
 from datetime import datetime
@@ -91,8 +93,8 @@ def process_submission(submission) -> dict:
     # Removes all posts with low score (might not be "asshole design")
     if submission.upvote_ratio < 0.6: return {0: -1}
     # Determines if the title is English
-    title_obj = TextBlob(submission.title)
-    title_lang = title_obj.detect_language()
+    # title_obj = TextBlob(submission.title)
+    # title_lang = title_obj.detect_language()
     # if title_lang != "en": return {0: -1}
     # Parses date & time
     submission_datetime = get_time_from_unix(int(float(submission.created_utc)))
@@ -128,7 +130,7 @@ def process_submission(submission) -> dict:
 
 ##### --------------------------------------------------------------------------------------- #####
 
-def retrieve_top(subreddit, timelabel:str="day", limit:int=1000) -> pd.DataFrame:
+def retrieve_top(subreddit, timelabel:str="day", limit:int=UPPER_BOUND) -> pd.DataFrame:
 	""" Return a DataFrame of the N top submissions over a given time horizon """
 	top_submissions = subreddit.top(timelabel, limit=limit)
 	data_rowslist = []
