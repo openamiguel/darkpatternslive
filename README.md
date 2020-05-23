@@ -18,6 +18,9 @@ This project was conducted as part of WWS 356: Civil Liberties in the Digital Ag
 I took this course during my Spring 2020 semester at Princeton University, with Professor Ari Waldman. 
 I wrote a term paper about dark patterns, using the results from this code. 
 
+### About the Code
+For convenience, all the code lies in `Dark_Patterns_Trawler.ipynb`. It suffices to download the file and run the notebook cells. There is some code in `twitter_parser.py`, from a failed attempt to parse dark patterns from Twitter. 
+
 ### Sources
 1. Brignull, H. “Dark Patterns: Deception vs. Honesty in UI Design”. A List Apart. URL: https://alistapart.com/article/dark-patterns-deception-vs.-honesty-in-ui-design/. 
 2. Gray, C. M. et al. “The Dark (Patterns) Side of UX Design.” _CHI 2018_, Apr 2018. 
